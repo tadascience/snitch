@@ -32,7 +32,9 @@ fun <- function(what) {
   call[[1L]] <- quote(trace)
   call$where <- topenv(parent.frame())
   call$tracer <- informant
-  eval.parent(call)
+  suppressMessages(eval.parent(call))
+
+  invisible()
 }
 
 #' Peek all functions from a package
