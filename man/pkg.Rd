@@ -14,4 +14,5 @@ Peek all functions from a package
 }
 \examples{
 pkg("dplyr")
+
 }

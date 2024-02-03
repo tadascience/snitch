@@ -40,6 +40,6 @@ fun <- function(fun, tracer = snitch::informant, where = topenv(parent.frame()))
 #'
 #' @examples
 #' pkg("dplyr")
-pkg <- function(pkg, pattern = "") {
-  .NotYetImplemented()
-}
+#'
+#' @export
+pkg <- function(pkg, pattern = "") {}
