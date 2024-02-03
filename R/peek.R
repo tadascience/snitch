@@ -33,3 +33,13 @@ fun <- function(fun, tracer = snitch::informant, where = topenv(parent.frame()))
   call$tracer <- tracer
   eval.parent(call)
 }
+
+#' Peek all functions from a package
+#'
+#' @param pkg The package to snitch on
+#'
+#' @examples
+#' pkg("dplyr")
+pkg <- function(pkg, pattern = "") {
+  .NotYetImplemented()
+}
