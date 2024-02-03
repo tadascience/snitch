@@ -4,7 +4,7 @@
 \alias{peek}
 \title{Peek function inputs}
 \usage{
-peek()
+peek(fun)
 }
 \description{
 Peek function inputs
