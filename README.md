@@ -3,6 +3,8 @@
 
 # snitch
 
+![](logo.png)
+
 <!-- badges: start -->
 
 [![Lifecycle:
@@ -21,7 +23,7 @@ The goal of snitch is to …
 You can install the development version of snitch like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+pak::pak("tadascience/snitch")
 ```
 
 ## Example

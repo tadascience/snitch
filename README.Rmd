@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 
 # snitch
 
+![](logo.png)
+
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/snitch)](https://CRAN.R-project.org/package=snitch)
@@ -29,7 +31,7 @@ The goal of snitch is to ...
 You can install the development version of snitch like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+pak::pak("tadascience/snitch")
 ```
 
 ## Example

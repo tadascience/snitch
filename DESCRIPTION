@@ -1,9 +1,9 @@
 Package: snitch
-Title: Spy on function calls and outputs
+Title: Spy on functions and packages
 Version: 2024.2.0
 Authors@R: 
     person("Romain", "François", email = "romain@tada.science", role = c("aut", "cre"))
-Description: Spy and inform about function calls and outputs.
+Description: Spy on functions and packages.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
