@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-02-03T10:17Z
+last_built: 2024-02-03T17:12Z
 urls:
   reference: http://snitch.tada.science/reference
   article: http://snitch.tada.science/articles
