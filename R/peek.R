@@ -22,7 +22,10 @@ informant <- function() {
 #' peek()
 #'
 #' @export
-peek <- function(fun) {
-  fun <- substitute(fun)
-  trace(fun, tracer = snitch::informant)
+peek <- function(fun, tracer = snitch::informant, where = topenv(parent.frame())) {
+  call <- sys.call()
+  call[[1L]] <- quote(trace)
+  call$where <- where
+  call$tracer <- tracer
+  eval.parent(call)
 }
