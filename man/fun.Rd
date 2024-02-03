@@ -4,7 +4,10 @@
 \alias{fun}
 \title{Peek function inputs}
 \usage{
-fun(fun, tracer = snitch::informant, where = topenv(parent.frame()))
+fun(what)
+}
+\arguments{
+\item{what}{Function to snitch on}
 }
 \description{
 Peek function inputs

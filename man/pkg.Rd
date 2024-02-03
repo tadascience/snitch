@@ -8,6 +8,8 @@ pkg(pkg, pattern = "")
 }
 \arguments{
 \item{pkg}{The package to snitch on}
+
+\item{pattern}{filter functions}
 }
 \description{
 Peek all functions from a package

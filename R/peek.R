@@ -1,7 +1,6 @@
-
-#' @export
+#' @importFrom utils ls.str capture.output
 informant <- function() {
-  hex_pink <- cli::make_ansi_style("pink")("⬢")
+  hex_pink <- cli::make_ansi_style("pink")("\U2B22")
 
   env <- parent.frame()
   calls <- sys.calls()
@@ -22,21 +21,24 @@ informant <- function() {
 
 #' Peek function inputs
 #'
+#' @param what Function to snitch on
+#'
 #' @examples
 #' fun(rnorm)
 #'
 #' @export
-fun <- function(fun, tracer = snitch::informant, where = topenv(parent.frame())) {
+fun <- function(what) {
   call <- sys.call()
   call[[1L]] <- quote(trace)
-  call$where <- where
-  call$tracer <- tracer
+  call$where <- topenv(parent.frame())
+  call$tracer <- informant
   eval.parent(call)
 }
 
 #' Peek all functions from a package
 #'
 #' @param pkg The package to snitch on
+#' @param pattern filter functions
 #'
 #' @examples
 #' pkg("dplyr")
