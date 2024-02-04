@@ -29,10 +29,7 @@ pak::pak("tadascience/snitch")
 ``` r
 # snitch on one function
 snitch::fun(rnorm)
-#> Tracing function "rnorm" in package "stats"
-#> [1] "rnorm"
 
 # snitch on all functions from a package
 snitch::pkg("dplyr")
-#> NULL
 ```
