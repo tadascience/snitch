@@ -1,37 +1,52 @@
-#' @importFrom utils ls.str capture.output
-informant <- function() {
-  hex_pink <- cli::make_ansi_style("pink")("\U2B22")
-
-  env <- parent.frame()
+breadcrumbs <- function() {
   calls <- sys.calls()
+  frames <- sys.frames()
+  snitched <- sapply(frames, function(f) exists(".__snitch", f, inherits = FALSE))
 
-  call <- deparse(calls[[length(calls) - 5L]])
+  crumbs <- sapply(calls[snitched], function(call) {
+    as.character(call[[1L]])
+  })
 
-  header <- paste(hex_pink, cli::col_silver("call:"), call)
-  content <- paste(hex_pink, cli::col_silver("env:"))
-  txt <- paste("    - ", capture.output(print(ls.str(env))))
-
-  print(cli::boxx(
-    c(header, content, txt),
-    padding = 1, border_col = "pink"
-  ))
-
-  invisible()
+  # TODO: figure out why eval is in there in the first place
+  crumbs[crumbs != "eval"]
 }
 
-#' Peek function inputs
+colors <- rainbow(1000)
+
+#' @importFrom utils ls.str capture.output
+informant <- function(col) {
+  function() {
+    assign(".__snitch", TRUE, parent.frame(n = 5))
+    colored <- cli::make_ansi_style(col)
+    hex <- "\U2B22"
+
+    env <- parent.frame()
+
+    crumbs <- paste(breadcrumbs(), collapse = paste0(" ", hex, " "))
+    writeLines(colored(cli::rule(crumbs)))
+    if (length(ls(env, all.names = FALSE))) {
+      txt <- paste("  ", capture.output(print(ls.str(env, all.names = FALSE))))
+      writeLines(colored(txt))
+    }
+
+    invisible()
+  }
+}
+
+#' Snitch on functions
 #'
 #' @param what Function to snitch on
+#' @param col color
 #'
 #' @examples
 #' fun(rnorm)
 #'
 #' @export
-fun <- function(what) {
+fun <- function(what, col = "pink") {
   call <- sys.call()
   call[[1L]] <- quote(trace)
   call$where <- topenv(parent.frame())
-  call$tracer <- informant
+  call$tracer <- informant(col)
   call$print <- FALSE
   suppressMessages(eval.parent(call))
 

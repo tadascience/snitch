@@ -2,15 +2,17 @@
 % Please edit documentation in R/peek.R
 \name{fun}
 \alias{fun}
-\title{Peek function inputs}
+\title{Snitch on functions}
 \usage{
-fun(what)
+fun(what, col = "pink")
 }
 \arguments{
 \item{what}{Function to snitch on}
+
+\item{col}{color}
 }
 \description{
-Peek function inputs
+Snitch on functions
 }
 \examples{
 fun(rnorm)
