@@ -32,6 +32,7 @@ fun <- function(what) {
   call[[1L]] <- quote(trace)
   call$where <- topenv(parent.frame())
   call$tracer <- informant
+  call$print <- FALSE
   suppressMessages(eval.parent(call))
 
   invisible()
