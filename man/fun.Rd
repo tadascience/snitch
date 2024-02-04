@@ -10,6 +10,8 @@ fun(what, col = "pink", where = topenv(parent.frame()))
 \item{what}{Function to snitch on}
 
 \item{col}{color}
+
+\item{where}{where to look for the function to be snitched on}
 }
 \description{
 Snitch on functions

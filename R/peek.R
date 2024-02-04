@@ -37,6 +37,7 @@ informant <- function(col) {
 #'
 #' @param what Function to snitch on
 #' @param col color
+#' @param where where to look for the function to be snitched on
 #'
 #' @examples
 #' fun(rnorm)
