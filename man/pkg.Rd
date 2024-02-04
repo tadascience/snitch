@@ -2,17 +2,19 @@
 % Please edit documentation in R/peek.R
 \name{pkg}
 \alias{pkg}
-\title{Peek all functions from a package}
+\title{Snitch on functions from a package}
 \usage{
-pkg(pkg, pattern = "")
+pkg(pkg, pattern = "", col = "pink")
 }
 \arguments{
 \item{pkg}{The package to snitch on}
 
 \item{pattern}{filter functions}
+
+\item{col}{color}
 }
 \description{
-Peek all functions from a package
+Snitch on functions from a package
 }
 \examples{
 pkg("dplyr")

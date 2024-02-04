@@ -4,7 +4,7 @@
 \alias{fun}
 \title{Snitch on functions}
 \usage{
-fun(what, col = "pink")
+fun(what, col = "pink", where = topenv(parent.frame()))
 }
 \arguments{
 \item{what}{Function to snitch on}

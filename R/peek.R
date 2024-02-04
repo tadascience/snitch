@@ -11,18 +11,18 @@ breadcrumbs <- function() {
   crumbs[crumbs != "eval"]
 }
 
-colors <- rainbow(1000)
+hex <- "\U2B22"
 
 #' @importFrom utils ls.str capture.output
 informant <- function(col) {
   function() {
     assign(".__snitch", TRUE, parent.frame(n = 5))
     colored <- cli::make_ansi_style(col)
-    hex <- "\U2B22"
 
     env <- parent.frame()
 
     crumbs <- paste(breadcrumbs(), collapse = paste0(" ", hex, " "))
+    crumbs <- stringr::str_trunc(crumbs, getOption("width") - 10, side = "left", ellipsis = "[...]")
     writeLines(colored(cli::rule(crumbs)))
     if (length(ls(env, all.names = FALSE))) {
       txt <- paste("  ", capture.output(print(ls.str(env, all.names = FALSE))))
@@ -42,24 +42,38 @@ informant <- function(col) {
 #' fun(rnorm)
 #'
 #' @export
-fun <- function(what, col = "pink") {
+fun <- function(what, col = "pink", where = topenv(parent.frame())) {
   call <- sys.call()
   call[[1L]] <- quote(trace)
-  call$where <- topenv(parent.frame())
+  call$where <- where
   call$tracer <- informant(col)
   call$print <- FALSE
+  call$col <- NULL
+
   suppressMessages(eval.parent(call))
 
   invisible()
 }
 
-#' Peek all functions from a package
+#' Snitch on functions from a package
 #'
 #' @param pkg The package to snitch on
 #' @param pattern filter functions
+#' @param col color
 #'
 #' @examples
 #' pkg("dplyr")
 #'
 #' @export
-pkg <- function(pkg, pattern = "") {}
+pkg <- function(pkg, pattern = "", col = "pink") {
+  ns <- asNamespace(pkg)
+
+  names <- ls(ns, pattern = pattern)
+
+  for (i in seq_along(names)) {
+    obj <- get(names[i], ns)
+    if (!is.function(obj)) next
+
+    snitch::fun(names[i], col = col, where = ns)
+  }
+}
