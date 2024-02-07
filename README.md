@@ -10,8 +10,6 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CRAN
 status](https://www.r-pkg.org/badges/version/snitch)](https://CRAN.R-project.org/package=snitch)
 [![R-CMD-check](https://github.com/tadascience/snitch/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tadascience/snitch/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/tadascience/snitch/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tadascience/snitch?branch=main)
 <!-- badges: end -->
 
 The goal of snitch is to …
