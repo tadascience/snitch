@@ -68,9 +68,6 @@ fun <- function(what, col = "pink", where = topenv(parent.frame())) {
 #' @param pattern filter functions
 #' @param col color
 #'
-#' @examples
-#' pkg("dplyr")
-#'
 #' @export
 pkg <- function(pkg, pattern = "", col = "pink") {
   ns <- asNamespace(pkg)

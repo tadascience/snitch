@@ -16,7 +16,3 @@ pkg(pkg, pattern = "", col = "pink")
 \description{
 Snitch on functions from a package
 }
-\examples{
-pkg("dplyr")
-
-}
