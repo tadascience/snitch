@@ -15,4 +15,6 @@ URL: https://github.com/tadascience/snitch, http://tada.science/snitch/
 BugReports: https://github.com/tadascience/snitch/issues
 Imports: 
     cli,
+    glue,
+    rlang,
     stringr

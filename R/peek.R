@@ -4,7 +4,13 @@ breadcrumbs <- function() {
   snitched <- sapply(frames, function(f) exists(".__snitch", f, inherits = FALSE))
 
   crumbs <- sapply(calls[snitched], function(call) {
-    as.character(call[[1L]])
+    if (rlang::is_call(call[[1L]], "::")) {
+      glue::glue("{pkg}::{fun}", pkg = call[[1L]][[2L]], fun = call[[1L]][[3L]])
+    } else if (rlang::is_call(call[[1L]], ":::")) {
+      glue::glue("{pkg}:::{fun}", pkg = call[[1L]][[2L]], fun = call[[1L]][[3L]])
+    } else {
+      as.character(call[[1L]])
+    }
   })
 
   # TODO: figure out why eval is in there in the first place
